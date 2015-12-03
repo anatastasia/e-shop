@@ -6,7 +6,7 @@ using System.Web;
 
 namespace EShop.Models
 {
-    public class Client : IdentityUser
+    public class ApplicationUser : IdentityUser
     {      
         public string Name { get; set; }
 

@@ -18,16 +18,18 @@ namespace EShop.Controllers
 {
     public class ClientsController : Controller
     {
-        public ClientsController() : this(new UserManager<Client>(new UserStore<Client>(new ShopContext())))
+        public ClientsController() : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ShopContext())), new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ShopContext())))
         {
         }
 
-        public ClientsController(UserManager<Client> userManager)
+        public ClientsController(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             UserManager = userManager;
+            RoleManager = roleManager;
         }
 
-        public UserManager<Client> UserManager { get; private set; }
+        public UserManager<ApplicationUser> UserManager { get; private set; }
+        public RoleManager<IdentityRole> RoleManager { get; private set; }
 
         //
         // GET: /Account/Login
@@ -38,12 +40,13 @@ namespace EShop.Controllers
             return View();
         }
 
-        [Authorize]
+        [Authorize(Roles = "Administrators")]
         public ActionResult Cabinet()
         {
             return View();
         }
-        
+
+        [Authorize]
         public ActionResult Index()
         {
             return View();
@@ -56,8 +59,6 @@ namespace EShop.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(ClientLoginModel model, string returnUrl)
         {
-            Client newAdmin = new Client { Name = "abacaba", UserName = "abacaba" };
-            UserManager.Create(newAdmin, "dabacaba");
             if (ModelState.IsValid)
             {
                 var user = await UserManager.FindAsync(model.Login, model.Password);
@@ -84,7 +85,7 @@ namespace EShop.Controllers
             }
         }
 
-        private async Task SignInAsync(Client user, bool isPersistent)
+        private async Task SignInAsync(ApplicationUser user, bool isPersistent)
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
             var identity = await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
