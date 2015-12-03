@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>E-Shop</title>
+</head>
+<body>
+    <nav>
+        @if (User.Identity.IsAuthenticated)
+        {
+            @Html.AntiForgeryToken();
+            @Html.ActionLink("Выйти", "LogOff", "Clients", null, null);
+            //@Html.Action("LogOff");
+        }
+        else
+        {
+            @Html.ActionLink("Войти", "Login", "Clients", null, null);
+        }
+        @{Html.EndForm();}
+    </nav>
+
+      @RenderBody()
+</body>
+</html>

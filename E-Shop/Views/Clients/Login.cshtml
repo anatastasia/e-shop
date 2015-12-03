@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+@model EShop.Models.ClientLoginModel
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+</head>
+<body>
+@{Html.BeginForm();}
+    <fieldset>
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <div class="editor-field">
+            <label>Логин</label>
+            @Html.TextBoxFor(client => client.Login)
+            @Html.ValidationMessageFor(client => client.Login)
+        </div>
+        <div class="editor-field">
+            <label>Пароль</label>
+            @Html.TextBoxFor(client => client.Password)
+            @Html.ValidationMessageFor(client => client.Password)
+        </div>
+        <div class="editor-field">
+            <label>Запомнить</label>
+            @Html.CheckBoxFor(client => client.RememberMe)
+            @Html.ValidationMessageFor(client => client.RememberMe)
+        </div>
+        <input type="submit" value="GO ON" />
+    </fieldset>
+    @{Html.EndForm();}
+</body>
+</html>
