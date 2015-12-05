@@ -1,0 +1,53 @@
+﻿@model IEnumerable<EShop.Models.Item>
+
+<!DOCTYPE html>
+
+@helper Display(char category)
+{
+    foreach (var item in Model)
+    {
+        if (item.Category.ToString() == category.ToString())
+        {
+            <div class="row" style="border: 1px solid #333; border-bottom: none;">
+                <div class="col-lg-2">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </div>
+                <div class="col-lg-2">
+                    @Html.DisplayFor(modelItem => item.Price)
+                </div>
+                <div class="col-lg-2">
+                    @Html.DisplayFor(modelItem => item.Description)
+                </div>
+                <div class="col-lg-2">
+                    @{
+                        string URL = item.Image;
+                    }
+                    <img src=@URL style="display: block; height: 200px;" />
+                </div>
+                <div class="col-lg-2">
+                    @Html.ActionLink("В корзину", "AddToCart", "Order", new { id = item.ItemID }, new { @class = "btn btn-success" })
+                </div>
+            </div>
+        }
+    }
+}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Browse</title>
+</head>
+<body>
+    <h2>Товары категории А:</h2>
+    @Display('A');
+    <h2>Товары категории B:</h2>
+    @Display('B');
+    <h2>Товары категории C:</h2>
+    @Display('C');
+    <h2>Товары категории D:</h2>
+    @Display('D');
+    <h2>Товары категории E:</h2>
+    @Display('E');
+    <h2>Товары категории F:</h2>
+    @Display('F');
+</body>
+</html>

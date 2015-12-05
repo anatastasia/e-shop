@@ -3,23 +3,41 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="~/Content/Site.css" rel="stylesheet">
     <title>E-Shop</title>
 </head>
 <body>
     <nav>
-        @if (User.Identity.IsAuthenticated)
-        {
-            @Html.AntiForgeryToken();
-            @Html.ActionLink("Выйти", "LogOff", "Clients", null, null);
-            //@Html.Action("LogOff");
-        }
-        else
-        {
-            @Html.ActionLink("Войти", "Login", "Clients", null, null);
-        }
-        @{Html.EndForm();}
+        <span>
+            <a href="~/Items/Index" class="logo">
+                <img src="~/Content/money132.png" />
+            </a>
+        </span>
+
+        <span class="btn btn-primary">
+            @if (User.Identity.IsAuthenticated)
+            {
+                @Html.AntiForgeryToken();
+                @Html.ActionLink("Выйти", "LogOff", "Clients", null, null);
+                //@Html.Action("LogOff");
+            }
+            else
+            {
+                @Html.ActionLink("Войти", "Login", "Clients", null, null);
+            }
+        </span>
+
+        <span class="btn btn-primary">
+            @Html.ActionLink("Все товары", "Browse", "Items", null, null)
+        </span>
     </nav>
 
-      @RenderBody()
+    @RenderBody()
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/application.js"></script>
 </body>
 </html>

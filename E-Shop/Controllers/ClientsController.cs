@@ -39,11 +39,11 @@ namespace EShop.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
-
-        [Authorize(Roles = "Administrators")]
+        
         public ActionResult Cabinet()
         {
-            return View();
+            var user = UserManager.FindById(User.Identity.GetUserId());
+            return View(user.Orders);
         }
 
         [Authorize]

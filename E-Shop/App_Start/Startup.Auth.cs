@@ -18,8 +18,8 @@ namespace EShop
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
                 LoginPath = new PathString("/Clients/Login"),
-                SlidingExpiration = false,
-                ExpireTimeSpan = TimeSpan.FromMinutes(1)
+                SlidingExpiration = true,
+                ExpireTimeSpan = TimeSpan.FromMinutes(120)
             });
             // Use a cookie to temporarily store information about a user logging in with a third party login provider
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);

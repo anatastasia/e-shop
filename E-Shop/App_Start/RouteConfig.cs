@@ -13,10 +13,18 @@ namespace EShop
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapMvcAttributeRoutes();
+
+            routes.MapRoute(
+                name: "AddToCart",
+                url: "Records/Edit/{id}",
+                defaults: new { controller = "Items", action = "AddToCart", id = UrlParameter.Optional }
+            );
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Items", action = "Index", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(
