@@ -16,5 +16,6 @@ namespace EShop.Models
         public Status? Status { get; set; }
         public DateTime OrderDate { get; set; }
         public List<Item> OrderItems { get; set; }
+        public string Client { get; set; }
     }
 }

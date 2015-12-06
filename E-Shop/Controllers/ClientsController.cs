@@ -13,6 +13,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Web.Security;
 using Microsoft.Owin.Security;
+using System.Collections;
 
 namespace EShop.Controllers
 {
@@ -42,8 +43,12 @@ namespace EShop.Controllers
         
         public ActionResult Cabinet()
         {
-            var user = UserManager.FindById(User.Identity.GetUserId());
-            return View(user.Orders);
+            var db = new ShopContext();
+            string userName = User.Identity.Name;
+            var orders = db.Orders.Where(tmp => tmp.Client == userName).ToList();
+            if (orders == null)
+                orders = new List<Order>();
+            return View(orders);
         }
 
         [Authorize]

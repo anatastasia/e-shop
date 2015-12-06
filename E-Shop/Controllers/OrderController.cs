@@ -49,8 +49,12 @@ namespace E_Shop.Controllers
             db.Orders.Add(CurrentCart);
             string userName = User.Identity.Name;
             var user = db.Users.Where(tmp => tmp.UserName == userName).ToList().First();
-            user.Orders.Add(CurrentCart);
+            if (user.UserOrders == null)
+                user.UserOrders = new List<Order>();
+            CurrentCart.Client = userName;
+            user.UserOrders.Add(CurrentCart);
             db.SaveChanges();
+            Session["CartId"] = null;
             return View();
         }
     }

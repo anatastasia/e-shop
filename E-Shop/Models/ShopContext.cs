@@ -27,6 +27,7 @@ namespace EShop.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+            modelBuilder.Entity<ApplicationUser>().HasMany(c => c.UserOrders);
             base.OnModelCreating(modelBuilder);
         }
     }

@@ -197,9 +197,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201512052347085_initial.cs" />
-    <Compile Include="Migrations\201512052347085_initial.Designer.cs">
-      <DependentUpon>201512052347085_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201512060007448_initial.cs" />
+    <Compile Include="Migrations\201512060007448_initial.Designer.cs">
+      <DependentUpon>201512060007448_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512060041026_initial1.cs" />
+    <Compile Include="Migrations\201512060041026_initial1.Designer.cs">
+      <DependentUpon>201512060041026_initial1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Client.cs" />
@@ -239,8 +243,11 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201512052347085_initial.resx">
-      <DependentUpon>201512052347085_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201512060007448_initial.resx">
+      <DependentUpon>201512060007448_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512060041026_initial1.resx">
+      <DependentUpon>201512060041026_initial1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

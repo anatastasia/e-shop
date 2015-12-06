@@ -1,4 +1,4 @@
-﻿@model EShop.Models.ApplicationUser
+﻿@model List<EShop.Models.Order>
 <!DOCTYPE html>
 
 <html>
@@ -8,10 +8,10 @@
 </head>
 <body>
     <div> 
-        @foreach (var item in Model.Orders)
+        @foreach (var item in Model)
         {
-            Html.DisplayFor(modelItem => item.OrderID);
-            Html.DisplayFor(modelItem => item.OrderDate);
+            @Html.DisplayFor(modelItem => item.OrderID)
+            @Html.DisplayFor(modelItem => item.OrderDate)
         }
     </div>
 </body>

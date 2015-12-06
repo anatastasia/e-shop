@@ -9,7 +9,7 @@ using System.Web;
 
 namespace E_Shop.Models
 {
-    public class ShopInitializer : DropCreateDatabaseAlways<ShopContext>
+    public class ShopInitializer : DropCreateDatabaseIfModelChanges<ShopContext>
     {
         protected override void Seed(ShopContext db)
         {
@@ -26,7 +26,7 @@ namespace E_Shop.Models
                 Email = "test@test.com",
                 EmailConfirmed = true,
                 SecurityStamp = Guid.NewGuid().ToString(),
-                Orders = new List<Order>()
+                UserOrders = new List<Order>()
             };
             db.Users.Add(admin);
             admin.Roles.Add(new IdentityUserRole { RoleId = adminRole.Id, UserId = admin.Id });
@@ -38,7 +38,7 @@ namespace E_Shop.Models
                 Email = "test@test.com",
                 EmailConfirmed = true,
                 SecurityStamp = Guid.NewGuid().ToString(),
-                Orders = new List<Order>()
+                UserOrders = new List<Order>()
             };
             db.Users.Add(user);
             user.Roles.Add(new IdentityUserRole { RoleId = userRole.Id, UserId = user.Id });
