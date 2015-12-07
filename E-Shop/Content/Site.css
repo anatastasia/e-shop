@@ -5,3 +5,7 @@
 .logo:hover {
     text-decoration: none;
 }
+
+.btn{
+    margin-right: 10px;
+}

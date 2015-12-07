@@ -1,7 +1,9 @@
 ﻿using EShop.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -56,6 +58,47 @@ namespace E_Shop.Controllers
             db.SaveChanges();
             Session["CartId"] = null;
             return View();
+        }
+
+        public ActionResult Admin()
+        {
+            List<Order> tmp = db.Orders.ToList();
+            tmp.RemoveAll(item => item.Client == null);
+            return View(tmp);
+        }
+
+        // GET: Items/Edit/5
+        [Authorize(Roles = "Administrators")]
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Order order = db.Orders.Find(id);
+            if (order == null)
+            {
+                return HttpNotFound();
+            }
+            return View(order);
+        }
+
+        // POST: Items/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Administrators")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(Order order)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Orders.Remove(db.Orders.Single(r => r.OrderID == order.OrderID));
+                db.Orders.Add(order);
+                db.SaveChanges();
+                return RedirectToAction("Admin");
+            }
+            return View(order);
         }
     }
 }

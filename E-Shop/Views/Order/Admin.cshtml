@@ -1,0 +1,51 @@
+﻿@model List<EShop.Models.Order>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Admin</title>
+</head>
+<body>
+    <div> 
+        <div class="col-lg-2">
+            @Html.ActionLink("Добавить продукт", "Create", "Items", null, new { @class = "btn btn-success" })
+        </div>
+        <div class="row" style="background: #b5ccfb">
+            <div class="col-lg-2">
+                Дата
+            </div>
+            <div class="col-lg-2">
+                Покупатель
+            </div>
+            <div class="col-lg-2">
+                Статус
+            </div>
+        </div>
+        @foreach (var item in Model)
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="row" style="border: 1px solid #333; border-bottom: none; margin-bottom: 3px;">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => item.OrderID)
+
+                <div class="col-md-2">
+                    @Html.DisplayTextFor(model => item.OrderDate)
+                </div>
+                <div class="col-md-2">
+                    @Html.DisplayTextFor(model => item.Client)
+                </div>
+                <div class="col-md-2">
+                    @Html.DisplayTextFor(model => item.Status)
+                </div>
+
+                <div class="col-md-2">
+                    @Html.ActionLink("Изменить", "Edit", "Order", new { id = item.OrderID }, new { @class = "btn btn-success" })
+                </div>
+            </div>
+        }
+    </div>
+</body>
+</html>

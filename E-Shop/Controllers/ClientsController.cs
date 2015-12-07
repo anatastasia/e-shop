@@ -113,12 +113,13 @@ namespace EShop.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Clients");
+                return RedirectToAction("Index", "Items");
             }
         }
 
         public ActionResult LogOff()
         {
+            System.Web.HttpContext.Current.Session["CartId"] = null;
             AuthenticationManager.SignOut();
             return RedirectToLocal("");
         }

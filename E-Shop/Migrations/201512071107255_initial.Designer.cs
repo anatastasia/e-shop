@@ -13,12 +13,12 @@ namespace E_Shop.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201512060007448_initial"; }
+            get { return "201512071107255_initial"; }
         }
         
         string IMigrationMetadata.Source
         {
-            get { return null; }
+            get { return Resources.GetString("Source"); }
         }
         
         string IMigrationMetadata.Target

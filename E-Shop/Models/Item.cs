@@ -7,7 +7,7 @@ namespace EShop.Models
 {
     public enum Category
     {
-        A, B, C, D, F
+        Food, Drinks, Furniture
     }
 
     public class Item

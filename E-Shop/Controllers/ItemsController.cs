@@ -86,7 +86,7 @@ namespace EShop.Controllers
         [Authorize(Roles = "Administrators")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ItemID,Name,Price,Image,Category,Description")] Item item)
+        public ActionResult Edit([Bind(Include = "ItemID,Name,Price,Image,Category,Description,ForSale")] Item item)
         {
             if (ModelState.IsValid)
             {

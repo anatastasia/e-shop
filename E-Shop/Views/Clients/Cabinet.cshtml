@@ -7,11 +7,34 @@
     <title>Cabinet</title>
 </head>
 <body>
+    <h2>Ваши заказы</h2>
     <div> 
+        <div class="row">
+            <div class="col-lg-4">
+                ID
+            </div>
+            <div class="col-lg-4">
+                Дата заказа
+            </div>
+            <div class="col-lg-4">
+                Статус
+            </div>
+        </div>
         @foreach (var item in Model)
         {
-            @Html.DisplayFor(modelItem => item.OrderID)
-            @Html.DisplayFor(modelItem => item.OrderDate)
+            <div class="row">
+                <div class="col-lg-4">
+                    @Html.DisplayFor(modelItem => item.OrderID)
+                </div>
+
+                <div class="col-lg-4">
+                    @Html.DisplayFor(modelItem => item.OrderDate)
+                </div>
+
+                <div class="col-lg-4">
+                    @Html.DisplayFor(modelItem => item.Status)
+                </div>
+            </div>
         }
     </div>
 </body>

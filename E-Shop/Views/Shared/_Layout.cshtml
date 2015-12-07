@@ -15,24 +15,40 @@
                 <img src="~/Content/money132.png" />
             </a>
         </span>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <span class="btn btn-primary">
+                @Html.AntiForgeryToken()
+                @Html.ActionLink("Выйти", "LogOff", "Clients", null, null)
+            </span>
 
-        <span class="btn btn-primary">
-            @if (User.Identity.IsAuthenticated)
-            {
-                @Html.AntiForgeryToken();
-                @Html.ActionLink("Выйти", "LogOff", "Clients", null, null);
-                //@Html.Action("LogOff");
-            }
-            else
-            {
-                @Html.ActionLink("Войти", "Login", "Clients", null, null);
-            }
-        </span>
+            <span class="btn btn-primary">
+                @Html.AntiForgeryToken()
+                @Html.ActionLink("Корзина", "Cart", "Order", null, null)
+            </span>
+
+            <span class="btn btn-primary">
+                @Html.AntiForgeryToken()
+                @Html.ActionLink("Кабинет", "Cabinet", "Clients", null, null)
+            </span>
+        }
+        else
+        {
+            <span class="btn btn-primary">
+                @Html.ActionLink("Войти", "Login", "Clients", null, null)
+            </span>
+        }
+        @if (User.IsInRole("Administrators"))
+        {
+            <span class="btn btn-primary">
+                @Html.ActionLink("Админка", "Admin", "Order", null, null)
+            </span>
+        }
 
         <span class="btn btn-primary">
             @Html.ActionLink("Все товары", "Browse", "Items", null, null)
         </span>
-    </nav>
+</nav>
 
     @RenderBody()
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>

@@ -10,48 +10,48 @@
 <div>
     <h4>Item</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
+    <div class="row">
+        <div>
             @Html.DisplayNameFor(model => model.Name)
-        </dt>
+        </div>
 
-        <dd>
+        <div>
             @Html.DisplayFor(model => model.Name)
-        </dd>
+        </div>
 
-        <dt>
+        <div>
             @Html.DisplayNameFor(model => model.Price)
-        </dt>
+        </div>
 
-        <dd>
+        <div>
             @Html.DisplayFor(model => model.Price)
-        </dd>
+        </div>
 
-        <dt>
+        <div>
             @Html.DisplayNameFor(model => model.Image)
-        </dt>
+        </div>
 
-        <dd>
+        <div>
             @Html.DisplayFor(model => model.Image)
-        </dd>
+        </div>
 
-        <dt>
+        <div>
             @Html.DisplayNameFor(model => model.Category)
-        </dt>
+        </div>
 
-        <dd>
+        <div>
             @Html.DisplayFor(model => model.Category)
-        </dd>
+        </div>
 
-        <dt>
+        <div>
             @Html.DisplayNameFor(model => model.Description)
-        </dt>
+        </div>
 
-        <dd>
+        <div>
             @Html.DisplayFor(model => model.Description)
-        </dd>
+        </div>
 
-    </dl>
+    </div>
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()

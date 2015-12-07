@@ -197,13 +197,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201512060007448_initial.cs" />
-    <Compile Include="Migrations\201512060007448_initial.Designer.cs">
-      <DependentUpon>201512060007448_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201512060041026_initial1.cs" />
-    <Compile Include="Migrations\201512060041026_initial1.Designer.cs">
-      <DependentUpon>201512060041026_initial1.cs</DependentUpon>
+    <Compile Include="Migrations\201512071107255_initial.cs" />
+    <Compile Include="Migrations\201512071107255_initial.Designer.cs">
+      <DependentUpon>201512071107255_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Client.cs" />
@@ -232,6 +228,8 @@
     <Content Include="Views\Items\Browse.cshtml" />
     <Content Include="Views\Order\Cart.cshtml" />
     <Content Include="Views\Order\Checkout.cshtml" />
+    <Content Include="Views\Order\Admin.cshtml" />
+    <Content Include="Views\Order\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -243,11 +241,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201512060007448_initial.resx">
-      <DependentUpon>201512060007448_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512060041026_initial1.resx">
-      <DependentUpon>201512060041026_initial1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201512071107255_initial.resx">
+      <DependentUpon>201512071107255_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

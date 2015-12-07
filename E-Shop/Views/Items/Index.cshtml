@@ -35,12 +35,26 @@
             <div class="col-lg-2">
                 @Html.DisplayFor(modelItem => item.Description)
             </div>
+            @{ 
+                string URL = item.Image;
+            }
+            <img src=@URL style="display: block; height: 200px;"/>
             <div class="col-lg-2">
-                @{ 
-                    string URL = item.Image;
-                }
-                <img src=@URL style="display: block; height: 200px;"/>
+                @Html.ActionLink("В корзину", "AddToCart", "Order", new { id = item.ItemID }, new { @class = "btn btn-success" })
             </div>
-        </div>
-    }
+                @if (User.IsInRole("Administrators"))
+                {
+                    <div class="col-lg-2">
+                        @Html.ActionLink("Удалить", "Delete", "Items", new { id = item.ItemID }, new { @class = "btn btn-success" })
+                    </div>
+                }
+
+                @if (User.IsInRole("Administrators"))
+                {
+                    <div class="col-lg-2">
+                        @Html.ActionLink("Изменить", "Edit", "Items", new { id = item.ItemID }, new { @class = "btn btn-success" })
+                    </div>
+                }
+            </div>
+         }
 }
